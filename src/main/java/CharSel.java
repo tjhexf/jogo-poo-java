@@ -6,8 +6,9 @@ import java.util.Objects;
 
 
 public class CharSel extends JPanel {
-    public CharSel() {
+    public CharSel() throws IOException, FontFormatException {
         super(new GridLayout(3,1));
+        this.run();
     }
     private static class CharSelectIcons extends JPanel {
         CharSelectIcons() {
@@ -38,26 +39,16 @@ public class CharSel extends JPanel {
 
         setSize(800,800);
 
-        PixelFontLabel label = new PixelFontLabel(
-                "Selecione o Herói",
-                SwingConstants.CENTER,
-                Font.BOLD,
-                Color.WHITE,
-                40
-        );
-
+        JLabel picLabel = new JLabel(new ImageIcon(getClass().getResource("frame.png")));
         c.gridx = 0;
         c.gridy = 0;
-        c.fill = GridBagConstraints.BOTH;
-
-        add(label, c);
-
+        add(picLabel, c);
         c.gridx = 0;
         c.gridy = 1;
+
 
         CharSelectIcons icons = new CharSelectIcons();
 
         add(new CharSelectIcons(), c);
-        setVisible(true);
     }
 }

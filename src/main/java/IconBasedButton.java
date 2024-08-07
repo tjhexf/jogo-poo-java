@@ -8,6 +8,7 @@ public class IconBasedButton extends JButton {
         super();
         setFocusPainted(false);
         setContentAreaFilled(false);
+        setBorder(null);
         setBackground(backgroundColor);
         ImageIcon iconImg = new ImageIcon(ClassLoader.getSystemResource(icon));
         setIcon(iconImg);

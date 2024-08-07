@@ -4,40 +4,60 @@ import java.io.IOException;
 import java.util.Objects;
 
 
-public class CharSel extends JFrame {
-    public CharSel() throws IOException, FontFormatException {
 
-        super("Dungeon Java");
+public class CharSel extends JPanel {
+    public CharSel() {
+        super(new GridLayout(3,1));
+    }
+    private static class CharSelectIcons extends JPanel {
+        CharSelectIcons() {
+            super(new GridLayout(1, 3));
+            //setSize(400, 150);
+            setBackground(Color.DARK_GRAY);
 
-        Font gameFont = Font.createFont(Font.TRUETYPE_FONT, Objects.requireNonNull(getClass().getResourceAsStream("gameFont.ttf")));
+            JButton button1 = new IconBasedButton("warriorr.png", Color.DARK_GRAY);
+            JButton button2 = new JButton("2");
+            button1.setBorderPainted(false);
+            JButton button3 = new JButton("3");
+            button1.setBorderPainted(false);
 
-        setSize(800,800);
+            GridBagConstraints c = new GridBagConstraints();
+            c.fill = GridBagConstraints.BOTH;
+            c.gridx = 0;
+            add(button1, c);
+            add(button2, c);
+            add(button3, c);
 
-        JPanel pane = new JPanel(new GridLayout(3,1));
+        }
+    }
+    public void run() throws IOException, FontFormatException {
 
-        pane.setBackground(Color.BLACK);
-
-        add(pane);
+        setBackground(Color.BLACK);
 
         GridBagConstraints c = new GridBagConstraints();
 
-        //pane.setSize(800,800);
+        setSize(800,800);
 
-        JLabel label = new JLabel("Selecione seu Herói", SwingConstants.CENTER);
-
-        label.setFont(gameFont.deriveFont(Font.BOLD, 30));
-        label.setForeground(Color.WHITE);
+        PixelFontLabel label = new PixelFontLabel(
+                "Selecione o Herói",
+                SwingConstants.CENTER,
+                Font.BOLD,
+                Color.WHITE,
+                40
+        );
 
         c.gridx = 0;
         c.gridy = 0;
         c.fill = GridBagConstraints.BOTH;
 
-        pane.add(label, c);
+        add(label, c);
 
         c.gridx = 0;
         c.gridy = 1;
 
-        pane.add(new CharSelectIcons(), c);
+        CharSelectIcons icons = new CharSelectIcons();
+
+        add(new CharSelectIcons(), c);
         setVisible(true);
     }
 }

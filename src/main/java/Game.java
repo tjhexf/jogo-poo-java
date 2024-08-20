@@ -8,6 +8,7 @@ import java.io.IOException;
 public class Game extends JFrame {
 
     public static String CharType;
+    public static int Ataque = 0;
 
     public static class WelcomeScreen extends JPanel {
         public WelcomeScreen(JPanel layout) {

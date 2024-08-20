@@ -38,6 +38,22 @@ public class CharSel extends JPanel {
                     panel.show(layout, "StatChoose");
                 }
             });
+            button2.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    CardLayout panel = (CardLayout) layout.getLayout();
+                    Game.CharType = "Paladin";
+                    panel.show(layout, "StatChoose");
+                }
+            });
+            button3.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    CardLayout panel = (CardLayout) layout.getLayout();
+                    Game.CharType = "Barbarian";
+                    panel.show(layout, "StatChoose");
+                }
+            });
 
         }
     }

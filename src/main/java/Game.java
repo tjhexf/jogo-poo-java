@@ -6,7 +6,7 @@ import java.io.IOException;
 
 
 public class Game extends JFrame {
-
+    private Heroi Player = new Heroi();
 
     public class WelcomeScreen extends JPanel {
         public WelcomeScreen(JPanel layout) {
@@ -40,15 +40,17 @@ public class Game extends JFrame {
 
     public Game() throws IOException, FontFormatException {
         super("Java Dungeon");
-
+        Run();
+    }
+    private void Run() throws IOException, FontFormatException {
         JPanel cardLayout = new JPanel(new CardLayout());
 
         WelcomeScreen welcomeScreen = new WelcomeScreen(cardLayout);
 
         setSize(800, 800);
 
-        CharSel charSel = new CharSel(cardLayout);
-        StatChoose statChoose = new StatChoose(cardLayout);
+        CharSel charSel = new CharSel(cardLayout, Player);
+        StatChoose statChoose = new StatChoose(cardLayout, Player);
 
         cardLayout.add(welcomeScreen, "Welcome");
         cardLayout.add(charSel, "CharSel");

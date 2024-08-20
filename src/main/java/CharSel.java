@@ -3,24 +3,26 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
-import java.util.Objects;
-
 
 
 public class CharSel extends JPanel {
-    public CharSel(JPanel layout) throws IOException, FontFormatException {
+    private Heroi hero;
+    public CharSel(JPanel layout, Heroi hero) throws IOException, FontFormatException {
         super(new GridLayout(3,1));
         this.run(layout);
+        this.hero = hero;
     }
-    private static class CharSelectIcons extends JPanel {
+    private class CharSelectIcons extends JPanel {
+        JButton button1 = new IconBasedButton("warriorr.png", Color.DARK_GRAY);
+        JButton button2 = new IconBasedButton("paladinn.png", Color.DARK_GRAY);
+        JButton button3 = new IconBasedButton("barbariann.png", Color.DARK_GRAY);
+
         CharSelectIcons(JPanel layout) {
             super(new GridLayout(1, 3));
             //setSize(400, 150);
             setBackground(Color.DARK_GRAY);
 
-            JButton button1 = new IconBasedButton("warriorr.png", Color.DARK_GRAY);
-            JButton button2 = new IconBasedButton("paladinn.png", Color.DARK_GRAY);
-            JButton button3 = new IconBasedButton("barbariann.png", Color.DARK_GRAY);
+
             button1.setBorderPainted(false);
 
             GridBagConstraints c = new GridBagConstraints();
@@ -29,12 +31,14 @@ public class CharSel extends JPanel {
             add(button1, c);
             add(button2, c);
             add(button3, c);
-
+            run(layout);
+        }
+        private void run(JPanel layout) {
             button1.addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
                     CardLayout panel = (CardLayout) layout.getLayout();
-                    Entidade.Jogador.setCharType("Warrior");
+                    hero = new Guerreiro();
                     panel.show(layout, "StatChoose");
                 }
             });
@@ -42,7 +46,7 @@ public class CharSel extends JPanel {
                 @Override
                 public void actionPerformed(ActionEvent e) {
                     CardLayout panel = (CardLayout) layout.getLayout();
-                    Entidade.Jogador.setCharType("Paladin");
+                    hero = new Paladino();
                     panel.show(layout, "StatChoose");
                 }
             });
@@ -50,11 +54,10 @@ public class CharSel extends JPanel {
                 @Override
                 public void actionPerformed(ActionEvent e) {
                     CardLayout panel = (CardLayout) layout.getLayout();
-                    Entidade.Jogador.setCharType("Barbarian");
+                    hero = new Barbaro();
                     panel.show(layout, "StatChoose");
                 }
             });
-
         }
     }
     public void run(JPanel layout) throws IOException, FontFormatException {

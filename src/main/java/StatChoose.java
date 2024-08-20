@@ -5,14 +5,12 @@ import java.awt.event.ActionListener;
 import java.io.IOException;
 
 public class StatChoose extends JPanel {
-    public StatChoose(JPanel layout) throws IOException, FontFormatException {
+    private Heroi hero;
+    public StatChoose(JPanel layout, Heroi hero) throws IOException, FontFormatException {
         super(new GridBagLayout());
+        this.hero = hero;
         run(layout);
     }
-
-    private int ataque = 0;
-    private int defesa = 0;
-    private int saude = 0;
 
     private void run(JPanel layout) throws IOException, FontFormatException {
         setBackground(Color.BLACK);
@@ -42,7 +40,7 @@ public class StatChoose extends JPanel {
         add(minusButton, c);
 
         PixelFontLabel AtaqueLabel = new PixelFontLabel(
-                ("Ataque: " + Entidade.Jogador.getAtaque()),
+                ("Ataque: " + hero.getAtaque()),
                 SwingConstants.CENTER,
                 Font.BOLD,
                 Color.white,
@@ -55,17 +53,17 @@ public class StatChoose extends JPanel {
         minusButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if (Entidade.Jogador.getAtaque() > 0)
-                    Entidade.Jogador.setAtaque(Entidade.Jogador.getAtaque() - 1);
-                AtaqueLabel.setText("Ataque: " + Entidade.Jogador.getAtaque());
+                if (hero.getAtaque() > 0)
+                    hero.setAtaque(hero.getAtaque() - 1);
+                AtaqueLabel.setText("Ataque: " + hero.getAtaque());
             }
         });
         addButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if (Entidade.Jogador.getAtaque() >= 0)
-                    Entidade.Jogador.setAtaque(Entidade.Jogador.getAtaque() + 1);
-                AtaqueLabel.setText("Ataque: " + Entidade.Jogador.getAtaque());
+                if (hero.getAtaque() >= 0)
+                    hero.setAtaque(hero.getAtaque() + 1);
+                AtaqueLabel.setText("Ataque: " + hero.getAtaque());
             }
         });
 

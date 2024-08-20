@@ -5,7 +5,8 @@ import java.util.Objects;
 
 
 public class Main {
+    public static Game game;
     public static void main(String[] args) throws IOException, FontFormatException {
-        Game game = new Game();
+        game = new Game();
     }
 }

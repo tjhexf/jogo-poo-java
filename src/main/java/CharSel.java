@@ -34,7 +34,7 @@ public class CharSel extends JPanel {
                 @Override
                 public void actionPerformed(ActionEvent e) {
                     CardLayout panel = (CardLayout) layout.getLayout();
-                    Game.CharType = "Warrior";
+                    Entidade.Jogador.setCharType("Warrior");
                     panel.show(layout, "StatChoose");
                 }
             });
@@ -42,7 +42,7 @@ public class CharSel extends JPanel {
                 @Override
                 public void actionPerformed(ActionEvent e) {
                     CardLayout panel = (CardLayout) layout.getLayout();
-                    Game.CharType = "Paladin";
+                    Entidade.Jogador.setCharType("Paladin");
                     panel.show(layout, "StatChoose");
                 }
             });
@@ -50,7 +50,7 @@ public class CharSel extends JPanel {
                 @Override
                 public void actionPerformed(ActionEvent e) {
                     CardLayout panel = (CardLayout) layout.getLayout();
-                    Game.CharType = "Barbarian";
+                    Entidade.Jogador.setCharType("Barbarian");
                     panel.show(layout, "StatChoose");
                 }
             });

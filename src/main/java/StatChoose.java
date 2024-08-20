@@ -42,7 +42,7 @@ public class StatChoose extends JPanel {
         add(minusButton, c);
 
         PixelFontLabel AtaqueLabel = new PixelFontLabel(
-                ("Ataque: " + Game.Ataque),
+                ("Ataque: " + Entidade.Jogador.getAtaque()),
                 SwingConstants.CENTER,
                 Font.BOLD,
                 Color.white,
@@ -55,15 +55,17 @@ public class StatChoose extends JPanel {
         minusButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if (Game.Ataque > 0) Game.Ataque -= 1;
-                AtaqueLabel.setText("Ataque: " + Game.Ataque);
+                if (Entidade.Jogador.getAtaque() > 0)
+                    Entidade.Jogador.setAtaque(Entidade.Jogador.getAtaque() - 1);
+                AtaqueLabel.setText("Ataque: " + Entidade.Jogador.getAtaque());
             }
         });
         addButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if (Game.Ataque >= 0) Game.Ataque += 1;
-                AtaqueLabel.setText("Ataque: " + Game.Ataque);
+                if (Entidade.Jogador.getAtaque() >= 0)
+                    Entidade.Jogador.setAtaque(Entidade.Jogador.getAtaque() + 1);
+                AtaqueLabel.setText("Ataque: " + Entidade.Jogador.getAtaque());
             }
         });
 

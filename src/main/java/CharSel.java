@@ -1,25 +1,26 @@
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.io.IOException;
 import java.util.Objects;
 
 
 
 public class CharSel extends JPanel {
-    public CharSel() throws IOException, FontFormatException {
+    public CharSel(JPanel layout) throws IOException, FontFormatException {
         super(new GridLayout(3,1));
-        this.run();
+        this.run(layout);
     }
     private static class CharSelectIcons extends JPanel {
-        CharSelectIcons() {
+        CharSelectIcons(JPanel layout) {
             super(new GridLayout(1, 3));
             //setSize(400, 150);
             setBackground(Color.DARK_GRAY);
 
             JButton button1 = new IconBasedButton("warriorr.png", Color.DARK_GRAY);
-            JButton button2 = new JButton("2");
-            button1.setBorderPainted(false);
-            JButton button3 = new JButton("3");
+            JButton button2 = new IconBasedButton("paladinn.png", Color.DARK_GRAY);
+            JButton button3 = new IconBasedButton("barbariann.png", Color.DARK_GRAY);
             button1.setBorderPainted(false);
 
             GridBagConstraints c = new GridBagConstraints();
@@ -29,9 +30,18 @@ public class CharSel extends JPanel {
             add(button2, c);
             add(button3, c);
 
+            button1.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    CardLayout panel = (CardLayout) layout.getLayout();
+                    Game.CharType = "Warrior";
+                    panel.show(layout, "StatChoose");
+                }
+            });
+
         }
     }
-    public void run() throws IOException, FontFormatException {
+    public void run(JPanel layout) throws IOException, FontFormatException {
 
         setBackground(Color.BLACK);
 
@@ -47,8 +57,8 @@ public class CharSel extends JPanel {
         c.gridy = 1;
 
 
-        CharSelectIcons icons = new CharSelectIcons();
+        CharSelectIcons icons = new CharSelectIcons(layout);
 
-        add(new CharSelectIcons(), c);
+        add(new CharSelectIcons(layout), c);
     }
 }

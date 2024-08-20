@@ -7,6 +7,8 @@ import java.io.IOException;
 
 public class Game extends JFrame {
 
+    public static String CharType;
+
     public static class WelcomeScreen extends JPanel {
         public WelcomeScreen(JPanel layout) {
             super(new GridLayout(3,1));
@@ -28,6 +30,7 @@ public class Game extends JFrame {
                 }
             });
             SairBut.addActionListener(new ActionListener() {
+                @Override
                 public void actionPerformed(ActionEvent e) {
                     System.exit(0);
                 }
@@ -45,10 +48,12 @@ public class Game extends JFrame {
 
         setSize(800, 800);
 
-        CharSel charSel = new CharSel();
+        CharSel charSel = new CharSel(cardLayout);
+        StatChoose statChoose = new StatChoose(cardLayout);
 
         cardLayout.add(welcomeScreen, "Welcome");
         cardLayout.add(charSel, "CharSel");
+        cardLayout.add(statChoose, "StatChoose");
 
         add(cardLayout);
 

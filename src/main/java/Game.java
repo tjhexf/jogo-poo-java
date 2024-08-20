@@ -6,7 +6,15 @@ import java.io.IOException;
 
 
 public class Game extends JFrame {
-    private Heroi Player = new Heroi();
+    private static Heroi Player;
+
+    public static void setPlayer(Heroi player) {
+        Player = player;
+    }
+
+    public static Heroi getPlayer() {
+        return Player;
+    }
 
     public class WelcomeScreen extends JPanel {
         public WelcomeScreen(JPanel layout) {
@@ -49,9 +57,9 @@ public class Game extends JFrame {
 
         setSize(800, 800);
 
-        CharSel charSel = new CharSel(cardLayout, Player);
-        StatChoose statChoose = new StatChoose(cardLayout, Player);
+        CharSel charSel = new CharSel(cardLayout);
 
+        StatChoose statChoose = new StatChoose(cardLayout);
         cardLayout.add(welcomeScreen, "Welcome");
         cardLayout.add(charSel, "CharSel");
         cardLayout.add(statChoose, "StatChoose");

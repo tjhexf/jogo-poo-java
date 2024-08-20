@@ -5,10 +5,8 @@ import java.awt.event.ActionListener;
 import java.io.IOException;
 
 public class StatChoose extends JPanel {
-    private Heroi hero;
-    public StatChoose(JPanel layout, Heroi hero) throws IOException, FontFormatException {
+    public StatChoose(JPanel layout) throws IOException, FontFormatException {
         super(new GridBagLayout());
-        this.hero = hero;
         run(layout);
     }
 
@@ -40,7 +38,7 @@ public class StatChoose extends JPanel {
         add(minusButton, c);
 
         PixelFontLabel AtaqueLabel = new PixelFontLabel(
-                ("Ataque: " + hero.getAtaque()),
+                ("Ataque: 0"),
                 SwingConstants.CENTER,
                 Font.BOLD,
                 Color.white,
@@ -53,17 +51,17 @@ public class StatChoose extends JPanel {
         minusButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if (hero.getAtaque() > 0)
-                    hero.setAtaque(hero.getAtaque() - 1);
-                AtaqueLabel.setText("Ataque: " + hero.getAtaque());
+                if (Game.getPlayer().getAtaque() > 0)
+                    Game.getPlayer().setAtaque(Game.getPlayer().getAtaque() - 1);
+                AtaqueLabel.setText("Ataque: " + Game.getPlayer().getAtaque());
             }
         });
         addButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if (hero.getAtaque() >= 0)
-                    hero.setAtaque(hero.getAtaque() + 1);
-                AtaqueLabel.setText("Ataque: " + hero.getAtaque());
+                if (Game.getPlayer().getAtaque() >= 0)
+                    Game.getPlayer().setAtaque(Game.getPlayer().getAtaque() + 1);
+                AtaqueLabel.setText("Ataque: " + Game.getPlayer().getAtaque());
             }
         });
 

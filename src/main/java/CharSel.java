@@ -7,10 +7,12 @@ import java.io.IOException;
 
 public class CharSel extends JPanel {
     private Heroi hero;
-    public CharSel(JPanel layout, Heroi hero) throws IOException, FontFormatException {
+    public CharSel(JPanel layout) throws IOException, FontFormatException {
         super(new GridLayout(3,1));
         this.run(layout);
-        this.hero = hero;
+    }
+    public Heroi getHero() {
+        return hero;
     }
     private class CharSelectIcons extends JPanel {
         JButton button1 = new IconBasedButton("warriorr.png", Color.DARK_GRAY);
@@ -39,6 +41,7 @@ public class CharSel extends JPanel {
                 public void actionPerformed(ActionEvent e) {
                     CardLayout panel = (CardLayout) layout.getLayout();
                     hero = new Guerreiro();
+                    Game.setPlayer(hero);
                     panel.show(layout, "StatChoose");
                 }
             });
@@ -47,6 +50,7 @@ public class CharSel extends JPanel {
                 public void actionPerformed(ActionEvent e) {
                     CardLayout panel = (CardLayout) layout.getLayout();
                     hero = new Paladino();
+                    Game.setPlayer(hero);
                     panel.show(layout, "StatChoose");
                 }
             });
@@ -55,6 +59,7 @@ public class CharSel extends JPanel {
                 public void actionPerformed(ActionEvent e) {
                     CardLayout panel = (CardLayout) layout.getLayout();
                     hero = new Barbaro();
+                    Game.setPlayer(hero);
                     panel.show(layout, "StatChoose");
                 }
             });

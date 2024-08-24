@@ -6,20 +6,12 @@ import java.io.IOException;
 
 
 public class Game extends JFrame {
-    private static Heroi Player;
-
-    public static void setPlayer(Heroi player) {
-        Player = player;
-    }
-
-    public static Heroi getPlayer() {
-        return Player;
-    }
-
+    //game é uma gameWindow(JFrame), ou seja, precisa de um gamePanel(JPanel) para funcionar direito, tipo moldura,
+    //tu coloca uma foto (JPanel) dentro da moldura (JFrame).
     public class WelcomeScreen extends JPanel {
-        public WelcomeScreen(JPanel layout) {
-            super(new GridLayout(3,1));
-            run(layout);
+        public WelcomeScreen(JPanel layout) {   //Mesma coisa do comentário acima, so que aplicada
+            super(new GridLayout(3,1));     //oq o super faz? entendi que isso seta a quantidade de botões
+            run(layout);    //oq o run faz?
         }
         private void run(JPanel layout) {
             IconBasedButton jogarBut = new IconBasedButton("jogar.png", Color.BLACK);
@@ -48,18 +40,17 @@ public class Game extends JFrame {
 
     public Game() throws IOException, FontFormatException {
         super("Java Dungeon");
-        Run();
-    }
-    private void Run() throws IOException, FontFormatException {
+
         JPanel cardLayout = new JPanel(new CardLayout());
 
         WelcomeScreen welcomeScreen = new WelcomeScreen(cardLayout);
 
         setSize(800, 800);
+        setLocationRelativeTo(null);    //põe no meio da tela
 
         CharSel charSel = new CharSel(cardLayout);
-
         StatChoose statChoose = new StatChoose(cardLayout);
+
         cardLayout.add(welcomeScreen, "Welcome");
         cardLayout.add(charSel, "CharSel");
         cardLayout.add(statChoose, "StatChoose");

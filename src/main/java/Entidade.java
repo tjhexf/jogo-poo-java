@@ -1,48 +1,42 @@
-public abstract class Entidade {
-    private int Ataque = 0;
-    private int Defesa = 0;
-    private int Saude = 0;
+import java.util.Random;
 
-    public int getAtaque() {
-        return Ataque;
+public class Entidade {
+    public static class Jogador {
+        private static String CharType;
+        private static int Ataque = 0;
+        private static int Defesa = 0;
+        private static int Saude = 1;
+
+        public static String getCharType() {
+            return CharType;
+        }
+
+        public static void setCharType(String charType) {
+            CharType = charType;
+        }
+
+        public static int getAtaque() {
+            return Ataque;
+        }
+
+        public static void setAtaque(int ataque) {
+            Ataque = ataque;
+        }
+
+        public static int getDefesa() {
+            return Defesa;
+        }
+
+        public static void setDefesa(int defesa) {
+            Defesa = defesa;
+        }
+
+        public static int getSaude() {
+            return Saude;
+        }
+
+        public static void setSaude(int saude) {
+            Saude = saude;
+        }
     }
-
-    public void setAtaque(int ataque) {
-        Ataque = ataque;
-    }
-
-    public int getDefesa() {
-        return Defesa;
-    }
-
-    public void setDefesa(int defesa) {
-        Defesa = defesa;
-    }
-
-    public int getSaude() {
-        return Saude;
-    }
-
-    public void setSaude(int saude) {
-        Saude = saude;
-    }
-}
-
-class Heroi extends Entidade{
-
-    public Heroi() {
-        setAtaque(0);
-    }
-
-
-}
-
-class Guerreiro extends Heroi {
-
-}
-class Paladino extends Heroi {
-
-}
-class Barbaro extends Heroi {
-
 }

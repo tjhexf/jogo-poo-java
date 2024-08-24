@@ -10,6 +10,10 @@ public class StatChoose extends JPanel {
         run(layout);
     }
 
+    private int ataque = 0;
+    private int defesa = 0;
+    private int saude = 0;
+
     private void run(JPanel layout) throws IOException, FontFormatException {
         setBackground(Color.BLACK);
         GridBagConstraints c = new GridBagConstraints();
@@ -38,7 +42,7 @@ public class StatChoose extends JPanel {
         add(minusButton, c);
 
         PixelFontLabel AtaqueLabel = new PixelFontLabel(
-                ("Ataque: 0"),
+                ("Ataque: " + Entidade.Jogador.getAtaque()),
                 SwingConstants.CENTER,
                 Font.BOLD,
                 Color.white,
@@ -51,17 +55,17 @@ public class StatChoose extends JPanel {
         minusButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if (Game.getPlayer().getAtaque() > 0)
-                    Game.getPlayer().setAtaque(Game.getPlayer().getAtaque() - 1);
-                AtaqueLabel.setText("Ataque: " + Game.getPlayer().getAtaque());
+                if (Entidade.Jogador.getAtaque() > 0)
+                    Entidade.Jogador.setAtaque(Entidade.Jogador.getAtaque() - 1);
+                AtaqueLabel.setText("Ataque: " + Entidade.Jogador.getAtaque());
             }
         });
         addButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if (Game.getPlayer().getAtaque() >= 0)
-                    Game.getPlayer().setAtaque(Game.getPlayer().getAtaque() + 1);
-                AtaqueLabel.setText("Ataque: " + Game.getPlayer().getAtaque());
+                if (Entidade.Jogador.getAtaque() >= 0)
+                    Entidade.Jogador.setAtaque(Entidade.Jogador.getAtaque() + 1);
+                AtaqueLabel.setText("Ataque: " + Entidade.Jogador.getAtaque());
             }
         });
 

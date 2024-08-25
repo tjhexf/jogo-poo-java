@@ -5,6 +5,9 @@ import java.awt.event.ActionListener;
 import java.io.IOException;
 
 public class StatChoose extends JPanel {
+
+    private int PointsLeft = 9;
+
     public StatChoose(JPanel layout) throws IOException, FontFormatException {
         super(new GridBagLayout());
         run(layout);
@@ -22,12 +25,22 @@ public class StatChoose extends JPanel {
                 Color.white,
                 20
                 );
+        PixelFontLabel pointsLabel = new PixelFontLabel(
+                ("Pontos Restantes:" + PointsLeft),
+                SwingConstants.CENTER,
+                Font.BOLD,
+                Color.white,
+                20
+        );
         atributosLabel.setMinimumSize(new Dimension(300,100));
+        pointsLabel.setMinimumSize(new Dimension(300,100));
         c.gridx = 1;
         c.gridy = 0;
         c.weighty = 0;
         atributosLabel.setVerticalAlignment(SwingConstants.CENTER);
         add(atributosLabel, c);
+        c.gridy = 1;
+        add(pointsLabel, c);
 
         IconBasedButton minusButton = new IconBasedButton("minus.png", Color.BLACK);
         IconBasedButton minusDefButton = new IconBasedButton("minus.png", Color.BLACK);
@@ -40,15 +53,15 @@ public class StatChoose extends JPanel {
        // addButton.setHorizontalAlignment(SwingConstants.RIGHT);
 
         c.gridx = 0;
-        c.gridy = 1;
+        c.gridy = 2;
         add(minusButton, c);
 
         c.gridx = 0;
-        c.gridy = 2;
+        c.gridy = 3;
         add(minusDefButton, c);
 
         c.gridx = 0;
-        c.gridy = 3;
+        c.gridy = 4;
         add(minusSauButton, c);
 
         PixelFontLabel AtaqueLabel = new PixelFontLabel(
@@ -59,7 +72,7 @@ public class StatChoose extends JPanel {
                 20
         );
         c.gridx = 1;
-        c.gridy = 1;
+        c.gridy = 2;
         c.weighty = 1;
         add(AtaqueLabel, c);
 
@@ -71,7 +84,7 @@ public class StatChoose extends JPanel {
                 20
         );
         c.gridx = 1;
-        c.gridy = 2 ;
+        c.gridy = 3 ;
         add(DefesaLabel, c);
 
         PixelFontLabel SaudeLabel = new PixelFontLabel(
@@ -82,22 +95,28 @@ public class StatChoose extends JPanel {
                 20
         );
         c.gridx = 1;
-        c.gridy = 3 ;
+        c.gridy = 4 ;
         add(SaudeLabel, c);
 
         minusButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if (Game.getPlayer().getAtaque() > 0)
+                if (Game.getPlayer().getAtaque() > 0) {
                     Game.getPlayer().setAtaque(Game.getPlayer().getAtaque() - 1);
+                    PointsLeft += 1;
+                    pointsLabel.setText("Pontos Restantes: " + PointsLeft);
+                }
                 AtaqueLabel.setText("Ataque: " + Game.getPlayer().getAtaque());
             }
         });
         addButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if (Game.getPlayer().getAtaque() >= 0)
+                if (Game.getPlayer().getAtaque() >= 0 && PointsLeft > 0) {
                     Game.getPlayer().setAtaque(Game.getPlayer().getAtaque() + 1);
+                    PointsLeft -= 1;
+                    pointsLabel.setText("Pontos Restantes: " + PointsLeft);
+                }
                 AtaqueLabel.setText("Ataque: " + Game.getPlayer().getAtaque());
             }
         });
@@ -105,16 +124,22 @@ public class StatChoose extends JPanel {
         minusDefButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if (Game.getPlayer().getDefesa() > 0)
+                if (Game.getPlayer().getDefesa() > 0) {
                     Game.getPlayer().setDefesa(Game.getPlayer().getDefesa() - 1);
+                    PointsLeft += 1;
+                    pointsLabel.setText("Pontos Restantes: " + PointsLeft);
+                }
                 DefesaLabel.setText("Defesa: " + Game.getPlayer().getDefesa());
             }
         });
         addDefButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if (Game.getPlayer().getDefesa() >= 0)
+                if (Game.getPlayer().getDefesa() >= 0 && PointsLeft > 0) {
                     Game.getPlayer().setDefesa(Game.getPlayer().getDefesa() + 1);
+                    PointsLeft -= 1;
+                    pointsLabel.setText("Pontos Restantes: " + PointsLeft);
+                }
                 DefesaLabel.setText("Defesa: " + Game.getPlayer().getDefesa());
             }
         });
@@ -122,16 +147,22 @@ public class StatChoose extends JPanel {
         minusSauButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if (Game.getPlayer().getSaude() > 0)
+                if (Game.getPlayer().getSaude() > 0) {
                     Game.getPlayer().setSaude(Game.getPlayer().getSaude() - 1);
+                    PointsLeft += 1;
+                    pointsLabel.setText("Pontos Restantes: " + PointsLeft);
+                }
                 SaudeLabel.setText("Saúde: " + Game.getPlayer().getSaude());
             }
         });
         addSauButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if (Game.getPlayer().getSaude() >= 0)
+                if (Game.getPlayer().getSaude() >= 0 && PointsLeft > 0) {
                     Game.getPlayer().setSaude(Game.getPlayer().getSaude() + 1);
+                    PointsLeft -= 1;
+                    pointsLabel.setText("Pontos Restantes: " + PointsLeft);
+                }
                 SaudeLabel.setText("Saúde: " + Game.getPlayer().getSaude());
             }
         });
@@ -139,19 +170,19 @@ public class StatChoose extends JPanel {
 
 
         c.gridx = 2;
-        c.gridy = 1;
+        c.gridy = 2;
         add(addButton, c);
 
         c.gridx = 2;
-        c.gridy = 2;
+        c.gridy = 3;
         add(addDefButton, c);
 
         c.gridx = 2;
-        c.gridy = 3;
+        c.gridy = 4;
         add(addSauButton, c);
 
         c.gridx = 1;
-        c.gridy = 4;
+        c.gridy = 5;
         IconBasedButton confirmButton = new IconBasedButton("confirmar.png", Color.BLACK);
         confirmButton.setHorizontalAlignment(SwingConstants.CENTER);
         add(confirmButton, c);

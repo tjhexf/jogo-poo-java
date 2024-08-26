@@ -1,4 +1,4 @@
-import java.util.Random;
+package Items;
 
 public class Armadilha extends Estrutura{
     private boolean tipo;

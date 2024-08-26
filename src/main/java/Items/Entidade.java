@@ -1,3 +1,5 @@
+package Items;
+
 public abstract class Entidade {
     private int Ataque = 0;
     private int Defesa = 0;
@@ -28,21 +30,3 @@ public abstract class Entidade {
     }
 }
 
-class Heroi extends Entidade{
-
-    public Heroi() {
-        setAtaque(0);
-    }
-
-
-}
-
-class Guerreiro extends Heroi {
-
-}
-class Paladino extends Heroi {
-
-}
-class Barbaro extends Heroi {
-
-}

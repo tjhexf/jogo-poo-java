@@ -1,3 +1,5 @@
+package Items;
+
 public class Elixir extends Estrutura{
 
     private int pontos;

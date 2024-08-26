@@ -1,3 +1,5 @@
+package Items;
+
 public class Bolsa extends Elixir{
 
     public Elixir[] elixir;

@@ -1,7 +1,7 @@
-import javax.swing.*;
+import Logic.Game;
+
 import java.awt.*;
 import java.io.IOException;
-import java.util.Objects;
 
 
 public class Main {

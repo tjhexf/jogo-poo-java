@@ -1,15 +1,24 @@
 package Items;
 
-public class Bolsa extends Elixir{
+public class Bolsa {
 
-    public Elixir[] elixir;
-    public int capacidade;
+    private Elixir[] elixir = new Elixir[3]; //O máximo do tabuleiro é 3
+    private int capacidade = 3; // A capacidade é o máximo
+    private int qtElixir = 0;
 
-    public void contarElixir(){
-
+    public void adicionarElixir(Elixir elixir){
+        this.elixir[qtElixir] = elixir;
+        qtElixir++;
+    }
+    public void removeElixir(){
+        this.elixir[qtElixir] = null; //check
+        qtElixir--;
     }
 
-    public void adicionarElixir(){
-
+    public int getQtElixir(){
+        return this.qtElixir;
+    }
+    public void setQtElixir(){
+        this.qtElixir =
     }
 }

@@ -1,5 +1,7 @@
+
 package Items;
 
-abstract public class Estrutura {
-
+public interface Estrutura {
+  public void setVisibility(boolean visibility);
 }
+

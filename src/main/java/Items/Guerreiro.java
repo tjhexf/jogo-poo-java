@@ -1,6 +1,5 @@
 package Items;
 
-
 public class Guerreiro extends Heroi {
 
     public Guerreiro(){
@@ -11,5 +10,3 @@ public class Guerreiro extends Heroi {
         System.out.println("Habilidade Guerr");
     }
 }
-
-

@@ -1,4 +1,5 @@
 package Items;
+
 public class Bolsa {
 
     private Elixir[] elixir = new Elixir[3]; //O máximo do tabuleiro é 3

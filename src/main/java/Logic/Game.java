@@ -1,3 +1,7 @@
+package Logic;
+
+import Items.Heroi;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -19,6 +23,7 @@ public class Game extends JFrame {
     public class WelcomeScreen extends JPanel {
         public WelcomeScreen(JPanel layout) {
             super(new GridLayout(3,1));
+            setBackground(Color.BLACK);
             run(layout);
         }
         private void run(JPanel layout) {
@@ -33,7 +38,7 @@ public class Game extends JFrame {
                 @Override
                 public void actionPerformed(ActionEvent e) {
                     CardLayout panel = (CardLayout) layout.getLayout();
-                    panel.show(layout, "CharSel");
+                    panel.show(layout, "Logic.CharSel");
                 }
             });
             SairBut.addActionListener(new ActionListener() {
@@ -57,12 +62,16 @@ public class Game extends JFrame {
 
         setSize(800, 800);
 
+
         CharSel charSel = new CharSel(cardLayout);
+
+        Tabuleiro tabuleiro = new Tabuleiro();
 
         StatChoose statChoose = new StatChoose(cardLayout);
         cardLayout.add(welcomeScreen, "Welcome");
-        cardLayout.add(charSel, "CharSel");
-        cardLayout.add(statChoose, "StatChoose");
+        cardLayout.add(charSel, "Logic.CharSel");
+        cardLayout.add(statChoose, "Logic.StatChoose");
+        cardLayout.add(tabuleiro, "Tabuleiro");
 
         add(cardLayout);
 

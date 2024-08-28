@@ -1,3 +1,5 @@
+package Logic;
+
 import javax.swing.*;
 import java.awt.*;
 import java.io.IOException;
@@ -11,7 +13,7 @@ public class PixelFontLabel extends JLabel {
                           int size
     ) throws IOException, FontFormatException {
         super(Text, HorizontalAlignment);
-        Font gameFont = Font.createFont(Font.TRUETYPE_FONT, Objects.requireNonNull(getClass().getResourceAsStream("gameFont.ttf")));
+        Font gameFont = Font.createFont(Font.TRUETYPE_FONT, Objects.requireNonNull(ClassLoader.getSystemResourceAsStream("gameFont.ttf")));
         setFont(gameFont.deriveFont(FontType, size));
         setForeground(FontColor);
     }

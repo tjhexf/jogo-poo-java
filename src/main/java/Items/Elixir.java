@@ -17,6 +17,4 @@ public class Elixir implements Estrutura{
     player.setPontosDevida(player.getPontosDevida()+this.value);
     }
 
-
-
 }

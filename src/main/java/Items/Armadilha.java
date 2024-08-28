@@ -23,6 +23,4 @@ public class Armadilha implements Estrutura {
         player.setPontosDevida(currentLifePoints-valueToDecrease);
     }
     }
-
-
 }

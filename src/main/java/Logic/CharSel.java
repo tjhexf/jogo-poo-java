@@ -1,3 +1,10 @@
+package Logic;
+
+import Items.Barbaro;
+import Items.Guerreiro;
+import Items.Heroi;
+import Items.Paladino;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -17,7 +24,7 @@ public class CharSel extends JPanel {
     private class CharSelectIcons extends JPanel {
         JButton button1 = new IconBasedButton("warriorr.png", Color.DARK_GRAY);
         JButton button2 = new IconBasedButton("paladinn.png", Color.DARK_GRAY);
-        JButton button3 = new IconBasedButton("barbariann.png", Color.DARK_GRAY);
+        JButton button3 = new IconBasedButton("aaaa/barbariann.png", Color.DARK_GRAY);
 
         CharSelectIcons(JPanel layout) {
             super(new GridLayout(1, 3));
@@ -42,7 +49,7 @@ public class CharSel extends JPanel {
                     CardLayout panel = (CardLayout) layout.getLayout();
                     hero = new Guerreiro();
                     Game.setPlayer(hero);
-                    panel.show(layout, "StatChoose");
+                    panel.show(layout, "Logic.StatChoose");
                 }
             });
             button2.addActionListener(new ActionListener() {
@@ -51,7 +58,7 @@ public class CharSel extends JPanel {
                     CardLayout panel = (CardLayout) layout.getLayout();
                     hero = new Paladino();
                     Game.setPlayer(hero);
-                    panel.show(layout, "StatChoose");
+                    panel.show(layout, "Logic.StatChoose");
                 }
             });
             button3.addActionListener(new ActionListener() {
@@ -60,7 +67,7 @@ public class CharSel extends JPanel {
                     CardLayout panel = (CardLayout) layout.getLayout();
                     hero = new Barbaro();
                     Game.setPlayer(hero);
-                    panel.show(layout, "StatChoose");
+                    panel.show(layout, "Logic.StatChoose");
                 }
             });
         }
@@ -73,7 +80,7 @@ public class CharSel extends JPanel {
 
         setSize(800,800);
 
-        JLabel picLabel = new JLabel(new ImageIcon(getClass().getResource("frame.png")));
+        JLabel picLabel = new JLabel(new ImageIcon(ClassLoader.getSystemResource("frame.png")));
         c.gridx = 0;
         c.gridy = 0;
         add(picLabel, c);

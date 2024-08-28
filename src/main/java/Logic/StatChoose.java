@@ -149,23 +149,23 @@ public class StatChoose extends JPanel {
         minusSauButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if (Game.getPlayer().getSaude() > 0) {
-                    Game.getPlayer().setSaude(Game.getPlayer().getSaude() - 1);
+                if (Game.getPlayer().getHealth() > 0) {
+                    Game.getPlayer().setHealth(Game.getPlayer().getHealth() - 1);
                     PointsLeft += 1;
                     pointsLabel.setText("Pontos Restantes: " + PointsLeft);
                 }
-                SaudeLabel.setText("Saúde: " + Game.getPlayer().getSaude());
+                SaudeLabel.setText("Saúde: " + Game.getPlayer().getHealth());
             }
         });
         addSauButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if (Game.getPlayer().getSaude() >= 0 && PointsLeft > 0) {
-                    Game.getPlayer().setSaude(Game.getPlayer().getSaude() + 1);
+                if (Game.getPlayer().getHealth() >= 0 && PointsLeft > 0) {
+                    Game.getPlayer().setHealth(Game.getPlayer().getHealth() + 1);
                     PointsLeft -= 1;
                     pointsLabel.setText("Pontos Restantes: " + PointsLeft);
                 }
-                SaudeLabel.setText("Saúde: " + Game.getPlayer().getSaude());
+                SaudeLabel.setText("Saúde: " + Game.getPlayer().getHealth());
             }
         });
 

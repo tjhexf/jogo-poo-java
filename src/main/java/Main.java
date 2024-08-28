@@ -1,15 +1,15 @@
 import Items.Heroi;
-import Logic.GameTerminal;
+import Logic.Game;
 import Logic.Board;
+import Logic.GameTerminal;
 
 import java.awt.*;
 import java.io.IOException;
 
 
 public class Main {
-    public static GameTerminal game;
+    private int GameTerminalOnly = 1;
     public static void main(String[] args) throws IOException, FontFormatException {
-        game = new GameTerminal();
-        game.run();
+            Game game = new Game();
     }
 }

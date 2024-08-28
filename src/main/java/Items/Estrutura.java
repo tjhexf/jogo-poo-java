@@ -2,6 +2,6 @@
 package Items;
 
 public interface Estrutura {
-  public void setVisibility(boolean visibility);
+  // public void setVisibility(boolean visibility);
 }
 

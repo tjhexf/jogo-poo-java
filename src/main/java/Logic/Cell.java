@@ -7,6 +7,9 @@ public class Cell {
     private int line;
     private int column;
     private Estrutura cellStructure;
+    private boolean visibility = false;
+
+
     public Cell(){
     };
     public Cell(int line, int column){
@@ -18,7 +21,9 @@ public class Cell {
         this.column = column;
         this.cellStructure = cellStructure;
     }
-
+    public void setVisibility(boolean visibility){
+        this.visibility = visibility;
+    };
 
     public static Armadilha createRandomTrap() {
         Random generator = new Random();
@@ -65,21 +70,6 @@ public class Cell {
         return monster;
     }
 
-
-    public void useOfStructure(Estrutura structure) {
-        if(structure instanceof Elixir){
-            System.out.println("Você encontrou um elixir!");
-            player.getBolsa().adicionarElixir((Elixir) structure);
-        }
-        else if(structure instanceof Armadilha){
-            System.out.println("Você encontrou uma armadilha!");
-            ((Armadilha) structure).decreaseLifePoints(player);
-        }
-        else if(structure instanceof Monster){
-            System.out.println("Você encontrou um monstro!");
-            battle((Monster) structure);
-        }
-    }
     /*
    public static Elixir createRandomElixir(Heroi player){
         Random generator = new Random();
@@ -91,7 +81,7 @@ public class Cell {
 
      */
 
-
+    public Cell getCell(){ return this;};
     public int getLine(){
         return this.line;
     }

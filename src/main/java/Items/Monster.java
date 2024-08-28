@@ -1,5 +1,7 @@
 package Items;
 
+import java.util.Scanner;
+
 public class Monster implements Estrutura {
     private int attackValue;
     private int defenseValue;
@@ -21,6 +23,31 @@ public class Monster implements Estrutura {
         this.visibility = visibility;
     };
 
+
+/*
+    public void battle(Heroi player){
+        int menu=0;
+        int round =0;
+        int lifePointsMonstro = this.getHealthValue();
+        int lifePointsPlayer = player.getPontosDevida();
+        int playerAttack = player.getAtaque();
+        int monsterAttack = this.getAttackValue();
+        while(lifePointsMonstro>0 && lifePointsPlayer>0){
+            System.out.println("\n1-Atacar\n2-Habilidade\n3-Elixir\n");
+            Scanner sc = new Scanner(System.in);
+            menu = sc.nextInt();
+            switch (menu){
+                case 1:
+                    break;
+                case 2:
+                    break;
+                case 3:
+                    break;
+            }
+            round++;
+        }
+    }
+ */
     public void fight(){
 
     }

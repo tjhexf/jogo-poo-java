@@ -10,7 +10,7 @@ import java.util.Scanner;
 
 public class Board {
     private static Heroi player;
-    private Cell[][] boardCells;
+    public Cell[][] boardCells;
     private Cell currCellOfPlayer = new Cell();
     private Cell cellChefao = new Cell();
     private int qtTips = 3;
@@ -20,12 +20,12 @@ public class Board {
     private int qtElixirsToPosition = 3;
     private int qtMonstersToPosition = 3;
 
-
     public Board() {
         this.boardCells = new Cell[5][10];
         for (int i = 0; i < 5; i++) {
             for (int j = 0; j < 10; j++) {
                 boardCells[i][j] = new Cell(i, j, null);
+                //boardCells[i][j].getCellStructure().setVisibility(false);
                 // Inicializa cada célula com posição e sem estrutura
             }
         }
@@ -35,15 +35,15 @@ public class Board {
         Random generator = new Random();
 
         int heroStartColumn = generator.nextInt(10);
-        Cell heroStartCell = new Cell(0, heroStartColumn);
-        heroStartCell.getCellStructure().setVisibility(true);
+        Cell heroStartCell = new Cell(0, heroStartColumn, null);
+        heroStartCell.setVisibility(true);
         setCurrCellOfPlayer(heroStartCell);
 
         Estrutura boss = new Monster();
         int bossColumn = generator.nextInt(10);
-        Cell chefaoStartCell = new Cell(4, bossColumn);
+        Cell chefaoStartCell = new Cell(4, bossColumn, boss);
         setBossCell(chefaoStartCell);
-        chefaoStartCell.getCellStructure().setVisibility(true);
+        chefaoStartCell.setVisibility(true);
         this.boardCells[4][bossColumn].setCellStructure(boss);
 
         positionTraps(this.qtTrapsToPosition, generator, currCellOfPlayer.getColumn());
@@ -102,6 +102,24 @@ public class Board {
                 currentLine++;
                 qtMonstersToPosition--;
             }
+        }
+    }
+
+    public void useOfStructure(Cell cell) {
+        cell.setVisibility(true);
+        Estrutura structure = cell.getCellStructure();
+        // structure.setVisibility(true);
+        if(structure instanceof Elixir){
+            System.out.println("Você encontrou um elixir!");
+            player.getBolsa().adicionarElixir((Elixir) structure);
+        }
+        else if(structure instanceof Armadilha){
+            System.out.println("Você encontrou uma armadilha!");
+            ((Armadilha) structure).decreaseLifePoints(player);
+        }
+        else if(structure instanceof Monster){
+            System.out.println("Você encontrou um monstro!");
+            //battle((Monster) structure);
         }
     }
 

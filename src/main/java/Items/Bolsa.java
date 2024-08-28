@@ -19,6 +19,6 @@ public class Bolsa {
         return this.qtElixir;
     }
     public void setQtElixir(){
-        this.qtElixir =
+        this.qtElixir = 0;
     }
 }

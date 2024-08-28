@@ -189,6 +189,15 @@ public class StatChoose extends JPanel {
         confirmButton.setHorizontalAlignment(SwingConstants.CENTER);
         add(confirmButton, c);
 
+        confirmButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                CardLayout panel = (CardLayout) layout.getLayout();
+                panel.show(layout, "Tabuleiro");
+
+            }
+        });
+
 
     }
 }

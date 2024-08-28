@@ -65,10 +65,13 @@ public class Game extends JFrame {
 
         CharSel charSel = new CharSel(cardLayout);
 
+        Tabuleiro tabuleiro = new Tabuleiro();
+
         StatChoose statChoose = new StatChoose(cardLayout);
         cardLayout.add(welcomeScreen, "Welcome");
         cardLayout.add(charSel, "Logic.CharSel");
         cardLayout.add(statChoose, "Logic.StatChoose");
+        cardLayout.add(tabuleiro, "Tabuleiro");
 
         add(cardLayout);
 

@@ -1,24 +1,35 @@
 package Items;
 
+import Logic.Tabuleiro;
+
 public class Bolsa {
 
     private Elixir[] elixir = new Elixir[3]; //O máximo do tabuleiro é 3
     private int capacidade = 3; // A capacidade é o máximo
-    private int qtElixir = 0;
+    private int qtElixir;
 
-    public void adicionarElixir(Elixir elixir){
-        this.elixir[qtElixir] = elixir;
-        qtElixir++;
+   public Bolsa () {
+      this.capacidade = 3;
+      this.qtElixir = 0;
     }
+    public void adicionarElixir(Elixir elixir){
+if(qtElixir<capacidade) {
+    this.elixir[qtElixir] = elixir;
+    (this.qtElixir)++;
+    Tabuleiro.setElixirLabel("Bolsa: " + qtElixir + " Elixir");
+}
+    }
+
     public void removeElixir(){
-        this.elixir[qtElixir] = null; //check
-        qtElixir--;
+      if (qtElixir>0) {
+          this.elixir[qtElixir] = null; //check
+          (this.qtElixir)--;
+          Tabuleiro.setElixirLabel("Bolsa: " + qtElixir + " Elixir");
+      }
     }
 
     public int getQtElixir(){
         return this.qtElixir;
     }
-    public void setQtElixir(){
-        this.qtElixir = 0;
-    }
+
 }

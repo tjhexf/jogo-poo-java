@@ -6,8 +6,8 @@ public class Barbaro extends Heroi {
         super();
     }
     @Override
-    public void habilidade(){
-        System.out.println("Habilidade Bar");
+    public String habilidade(){
+        return "Habilidade Barbaro";
     }
 }
 

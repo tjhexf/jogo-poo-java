@@ -9,9 +9,9 @@ public abstract class Heroi{
     private int defesa;
     private int health;
     private int pontosDevida;
-    private Bolsa bolsa;
+    private Bolsa bolsa = new Bolsa();
     private String name;
-    public abstract void habilidade();
+    public abstract String habilidade();
     public int getAtaque(){
         return this.ataque;
     }
@@ -29,7 +29,7 @@ public abstract class Heroi{
         return this.health;
     }
     public void setHealth(int saude){
-        this.health = health;
+        this.health = saude;
     }
     public int getPontosDevida(){
         return this.pontosDevida;
@@ -43,5 +43,4 @@ public abstract class Heroi{
 
     public Bolsa getBolsa(){ return this.bolsa;}
 
-    public void setBolsa(Bolsa bolsa){ this.bolsa = bolsa;}
 }

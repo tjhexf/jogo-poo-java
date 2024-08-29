@@ -10,6 +10,21 @@ import java.io.IOException;
 
 
 public class Game extends JFrame {
+    public static JPanel cardLayout = new JPanel(new CardLayout());
+    public static boolean isDebug() {
+        return debug;
+    }
+
+    private static boolean debug = false;
+    public static boolean isGamewin() {
+        return gamewin;
+    }
+
+    public void setGamewin(boolean gamewin) {
+        this.gamewin = gamewin;
+    }
+
+    private static boolean gamewin = false;
     private static Heroi Player;
 
     public static void setPlayer(Heroi player) {
@@ -34,10 +49,20 @@ public class Game extends JFrame {
             IconBasedButton SairBut = new IconBasedButton("sair.png", Color.BLACK);
             add(SairBut);
 
+            DebugBut.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    CardLayout panel = (CardLayout) layout.getLayout();
+                    debug = true;
+                    panel.show(layout, "Tabuleiro");
+                }
+            });
+
             jogarBut.addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
                     CardLayout panel = (CardLayout) layout.getLayout();
+                    debug = false;
                     panel.show(layout, "Logic.CharSel");
                 }
             });
@@ -56,22 +81,25 @@ public class Game extends JFrame {
         Run();
     }
     private void Run() throws IOException, FontFormatException {
-        JPanel cardLayout = new JPanel(new CardLayout());
+
 
         WelcomeScreen welcomeScreen = new WelcomeScreen(cardLayout);
+
 
         setSize(800, 800);
 
 
         CharSel charSel = new CharSel(cardLayout);
 
-        Tabuleiro tabuleiro = new Tabuleiro();
+        Tabuleiro tabuleiro = new Tabuleiro(cardLayout);
 
         StatChoose statChoose = new StatChoose(cardLayout);
         cardLayout.add(welcomeScreen, "Welcome");
         cardLayout.add(charSel, "Logic.CharSel");
         cardLayout.add(statChoose, "Logic.StatChoose");
         cardLayout.add(tabuleiro, "Tabuleiro");
+        End end = new End(cardLayout);
+        cardLayout.add(end, "End");
 
         add(cardLayout);
 

@@ -5,6 +5,8 @@ import Items.Armadilha;
 import Items.Elixir;
 import Items.Estrutura;
 
+import javax.swing.*;
+import java.awt.*;
 import java.util.Random;
 import java.util.Scanner;
 
@@ -18,7 +20,7 @@ public class Board {
     //12 armadilhas, 3 elixires e 3 monstros (fora o chefão, posicionado separadamente pois é sempre visivel)
     private int qtTrapsToPosition = 12;
     private int qtElixirsToPosition = 3;
-    private int qtMonstersToPosition = 3;
+    private int qtMonstersToPosition = 4;
 
     public Board() {
         this.boardCells = new Cell[5][10];
@@ -106,19 +108,30 @@ public class Board {
     }
 
     public void useOfStructure(Cell cell) {
-        cell.setVisibility(true);
+      //  cell.setVisibility(true);
         Estrutura structure = cell.getCellStructure();
         // structure.setVisibility(true);
         if(structure instanceof Elixir){
             System.out.println("Você encontrou um elixir!");
-            player.getBolsa().adicionarElixir((Elixir) structure);
+            Elixir novoElixir = (Elixir) structure;
+            player.getBolsa().adicionarElixir(novoElixir);
+            // player.getBolsa().adicionarElixir((Elixir) structure);
+      System.out.println("A bolsa tem algo");
+
         }
         else if(structure instanceof Armadilha){
+            Armadilha novaArmadilha = (Armadilha) structure;
+            novaArmadilha.decreaseLifePoints(player);
             System.out.println("Você encontrou uma armadilha!");
-            ((Armadilha) structure).decreaseLifePoints(player);
+            //((Armadilha) structure).decreaseLifePoints(player);
         }
         else if(structure instanceof Monster){
             System.out.println("Você encontrou um monstro!");
+            Batalha novaBatalha = new Batalha();
+            novaBatalha.run((Monster) structure);
+            CardLayout layout = (CardLayout) Game.cardLayout.getLayout();
+            Game.cardLayout.add(novaBatalha, "Batalha");
+            layout.show(Game.cardLayout, "Batalha");
             //battle((Monster) structure);
         }
     }
@@ -126,7 +139,7 @@ public class Board {
 
     public void useTip(){
         if(qtTips>0) {
-            Scanner sc = new Scanner(System.in);
+           Scanner sc = new Scanner(System.in);
             System.out.print("Para usar dica, digite 1, para não usar, digite 0");
             int tip = sc.nextInt();
             if (tip == 1) {
@@ -142,9 +155,28 @@ public class Board {
             }
         }
     }
+    /*public void useTip(){
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Digite a linha da dica:");
+        int lineTip = sc.nextInt();
+        System.out.print("Digite a coluna da dica:");
+        int columnTip = sc.nextInt();
+
+        Cell cellTip = new Cell(lineTip, columnTip);
+        if (cellTip.getCellStructure() instanceof Armadilha) {
+            System.out.println("A célula informada tem uma armadilha");
+        }else{
+            System.out.println("A célula não tem nada");
+        }
+        qtTips--;
+    }*/
+
 
     public void setPlayer(Heroi heroi) {
         player = heroi;
+    }
+    public Heroi getPlayer() {
+        return player;
     }
     public Cell getCurrCellOfPlayer() {
         return this.currCellOfPlayer;

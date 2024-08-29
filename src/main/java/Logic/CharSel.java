@@ -49,6 +49,7 @@ public class CharSel extends JPanel {
                     CardLayout panel = (CardLayout) layout.getLayout();
                     hero = new Guerreiro();
                     Game.setPlayer(hero);
+                    Tabuleiro.getBoard().setPlayer(hero);
                     panel.show(layout, "Logic.StatChoose");
                 }
             });
@@ -58,6 +59,7 @@ public class CharSel extends JPanel {
                     CardLayout panel = (CardLayout) layout.getLayout();
                     hero = new Paladino();
                     Game.setPlayer(hero);
+                    Tabuleiro.getBoard().setPlayer(hero);
                     panel.show(layout, "Logic.StatChoose");
                 }
             });
@@ -67,6 +69,7 @@ public class CharSel extends JPanel {
                     CardLayout panel = (CardLayout) layout.getLayout();
                     hero = new Barbaro();
                     Game.setPlayer(hero);
+                    Tabuleiro.getBoard().setPlayer(hero);
                     panel.show(layout, "Logic.StatChoose");
                 }
             });

@@ -6,7 +6,7 @@ public class Guerreiro extends Heroi {
         super();
     }
     @Override
-    public void habilidade(){
-        System.out.println("Habilidade Guerr");
+    public String habilidade(){
+        return "Habilidade Guerreiro";
     }
 }

@@ -1,5 +1,7 @@
 package Items;
 
+import Logic.Tabuleiro;
+
 public class Elixir implements Estrutura{
 
     private int value;
@@ -14,7 +16,10 @@ public class Elixir implements Estrutura{
 
 
     public void increaseLifePoints(Heroi player) {
-    player.setPontosDevida(player.getPontosDevida()+this.value);
+
+        player.setPontosDevida(player.getPontosDevida()+this.value);
+
+        Tabuleiro.setElixirLabel("Bolsa: " + player.getBolsa().getQtElixir() + " Elixir");
     }
 
 }

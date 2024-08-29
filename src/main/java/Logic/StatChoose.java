@@ -193,8 +193,9 @@ public class StatChoose extends JPanel {
             @Override
             public void actionPerformed(ActionEvent e) {
                 CardLayout panel = (CardLayout) layout.getLayout();
+                Tabuleiro.Getboard().setPlayer(Game.getPlayer());
+                Game.getPlayer().setPontosDevida(10 + Game.getPlayer().getHealth());
                 panel.show(layout, "Tabuleiro");
-
             }
         });
 
